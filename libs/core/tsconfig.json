@@ -1,0 +1,6 @@
+{
+  "extends": "@fe-monorepo/tsconfig/common.json",
+  "include": ["./src/*.ts"],
+  "exclude": ["dist", "build", "node_modules"],
+  "compilerOptions": {}
+}

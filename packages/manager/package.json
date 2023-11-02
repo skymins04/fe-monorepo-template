@@ -1,0 +1,22 @@
+{
+  "name": "@fe-monorepo/manager",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "create:next": "tsx ./src/create-app/createNextApp.ts",
+    "remove:node-modules": "tsx ./src/remove-node-modules/removeNodeModules.ts",
+    "init:monorepo": "tsx ./src/init-monorepo/initMonorepo.ts"
+  },
+  "devDependencies": {
+    "@fe-monorepo/tsconfig": "workspace:^",
+    "@types/prompts": "^2",
+    "handle-cli-error": "^4.0.2",
+    "loading-cli": "^1.1.1",
+    "prompts": "^2.4.2",
+    "tsx": "^3.14.0",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "@fe-monorepo/core": "workspace:^"
+  }
+}
