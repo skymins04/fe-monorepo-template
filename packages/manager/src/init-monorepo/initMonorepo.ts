@@ -21,24 +21,32 @@ const initMonorepo = async () => {
     );
     const monorepoName = monorepoRootMonorepoJSON.name;
     if (typeof monorepoName !== "string") {
-      throw new Error("Not found monorepo name");
+      throw new Error("Not found monorepo name.");
+    }
+    if (
+      typeof answers.monorepoRootName !== "string" ||
+      answers.monorepoRootName.trim() === ""
+    ) {
+      throw new Error("Not allowed monorepo name.");
     }
 
-    await waitLoading("Change monorepo root name...", async () =>
+    await waitLoading("Change monorepo root name...", async () => {
       replaceStringAllFiles(
         PATH_DIR_MONOREPO_ROOT,
         monorepoName,
         answers.monorepoRootName,
         /(node\_modules|(.*\-lock\.yaml))/g
-      )
-    );
-    await waitLoading("Remove node modules...", () => removeNodeModules());
-    await waitLoading("Remove lock file...", async () =>
-      removePackageLockFile(PATH_DIR_MONOREPO_ROOT, "pnpm")
-    );
-    await waitLoading("Reinstall monorepo packages...", () =>
-      installPackagesAtMonorepoRoot()
-    );
+      );
+    });
+    await waitLoading("Remove node modules...", async () => {
+      removeNodeModules();
+    });
+    await waitLoading("Remove lock file...", async () => {
+      removePackageLockFile(PATH_DIR_MONOREPO_ROOT, "pnpm");
+    });
+    await waitLoading("Reinstall monorepo packages...", async () => {
+      installPackagesAtMonorepoRoot();
+    });
   } catch (e) {
     handleCliError(e);
     exit(1);
