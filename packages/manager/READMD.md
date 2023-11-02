@@ -60,6 +60,8 @@ pnpm create:next
 export const DEPENDENCIES_MONOREPO_NEXTJS: string[] = [
   "@fe-monorepo/core",
   "@fe-monorepo/hooks",
+  "@fe-monorepo/utils",
+  "@fe-monorepo/ui",
 ];
 
 /**
@@ -102,6 +104,7 @@ export const DEPENDENCIES_DEV_NEXTJS: string[] = [
   "eslint-plugin-jest",
   "eslint-plugin-prettier",
   "eslint-plugin-unused-imports",
+  "eslint-plugin-react-refresh",
   "@tailwindcss/forms",
   "@tailwindcss/typography",
   "@types/js-cookie",
@@ -110,4 +113,5 @@ export const DEPENDENCIES_DEV_NEXTJS: string[] = [
   "webpack",
   "@next/bundle-analyzer",
 ];
+
 ```
